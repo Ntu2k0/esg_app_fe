@@ -103,7 +103,7 @@ export default function UploadDocument() {
           <input type="file" accept=".pdf" onChange={(e) => setFile(e.target.files?.[0] ?? null)} />
           <br /><br />
           <button type="submit">Upload</button>
-          {filename ? <h4 style={{ marginTop: "1rem", color: "#666" }}>File: {filename}</h4> : null}
+          {filename ? <h4 style={{ marginTop: "1rem", color: "#666" }}>Report: {filename}</h4> : null}
         </div>
       </form>
 
@@ -198,6 +198,24 @@ export default function UploadDocument() {
               ) : (
                 <div style={{ color: "#888" }}>No category scores available</div>
               )}
+            </div>
+            <div
+              style={{
+                gridColumn: "1 / -1",
+                background: "#fafafa",
+                border: "1px solid #eee",
+                borderRadius: 12,
+                padding: "14px 16px",
+                lineHeight: 1.5,
+                color: "#333",
+              }}
+            >
+              <strong>What does the ESG rating mean?</strong>
+              <div style={{ marginTop: 6 }}>
+                A <strong>{overall}</strong> ESG score indicates a good Sustainability performance. <strong>Teraco's</strong> ESG rating score
+                is between is between 60-69, which according to the ESG score Rating system is a <strong>Good</strong> rating. Companies that obtain
+                 a good ESG rating follow most ESG best practices, and their work does little to harm the environment or society.
+              </div>
             </div>
           </div>
         </>
