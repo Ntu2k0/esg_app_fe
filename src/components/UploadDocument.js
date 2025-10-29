@@ -15,7 +15,7 @@ export default function UploadDocument() {
   const [error, setError] = useState("");
 
   const reportRef = useRef(null);
-  const API = "http://localhost:5000";
+  const API = "https://esg-app-1-7w6d.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
