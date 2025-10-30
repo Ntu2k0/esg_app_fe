@@ -11,7 +11,6 @@ export default function UploadDocument() {
   const [overall, setOverall] = useState(null);
   const [esg, setEsg] = useState(null);
   const [filename, setFilename] = useState("");
-  const [docId, setDocId] = useState(null); 
   const [error, setError] = useState("");
 
   const reportRef = useRef(null);
@@ -212,7 +211,7 @@ export default function UploadDocument() {
             >
               <strong>What does the ESG rating mean?</strong>
               <div style={{ marginTop: 6 }}>
-                A <strong>{overall}</strong> ESG score indicates a good Sustainability performance. <strong>Teraco's</strong> ESG rating score
+                A <strong>{overall}</strong> ESG score indicates a good Sustainability performance. ESG rating score
                 is between is between 60-69, which according to the ESG score Rating system is a <strong>Good</strong> rating. Companies that obtain
                  a good ESG rating follow most ESG best practices, and their work does little to harm the environment or society.
               </div>
