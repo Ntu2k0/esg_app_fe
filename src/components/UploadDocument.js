@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   PieChart, Pie, Cell, Tooltip, Legend, ResponsiveContainer,
 } from "recharts";
@@ -13,9 +13,19 @@ export default function UploadDocument() {
   const [filename, setFilename] = useState("");
   //const [docI_d, setDocId] = useState(null); 
   const [error, setError] = useState("");
-
+  const [range, setRange] = useState("");
+  const [status, setStatus] = useState("");
+  const [description, setDescription] = useState("");
   const reportRef = useRef(null);
   const API = "https://esg-app-1-7w6d.onrender.com";
+
+  useEffect(() => {
+  if (overall == null) return;
+  const { range, status, desc } = classify(overall);
+  setRange(range);
+  setStatus(status);
+  setDescription(desc);
+}, [overall]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -42,7 +52,49 @@ export default function UploadDocument() {
     } finally {
       setFile(null);
     }
+    // const s = Number(overall)
+    // if (s < 60.0){
+    //   setRange("0-59");
+    //   setStatus("Average");
+    //   setDescription("Companies that obtain an average ESG rating need to follow most ESG best practices, and their work does more to harm the environment or society.")
+    
+    // }
+    // else if(s >= 60.0 && s < 70.0){
+    //   setRange("60-69");
+    //   setStatus("Good");
+    //   setDescription("Companies that obtain a good ESG rating follow most ESG best practices, and their work does little to harm the environment or society.");
+    // }
+    // else if(s >= 70){
+    //   setRange("70-100");
+    //   setStatus("Excellent");
+    //   setDescription("Companies that obtain a good ESG rating follow most ESG best practices, and their work does very little to harm the environment or society.");
+    // }
+
   };
+  function classify(overallRaw) {
+  const s = Number(overallRaw);         // force numeric
+  if (!Number.isFinite(s)) return { range: null, status: null, desc: "Invalid score" };
+
+  if (s < 60) {
+    return {
+      range: "50-59",
+      status: "Average",
+      desc: "Companies that obtain an average ESG rating need to follow most ESG best practices, and their work does more to harm the environment or society."
+    };
+  }
+  if (s < 70) {
+    return {
+      range: "60-69",
+      status: "Good",
+      desc: "Companies that obtain a good ESG rating follow most ESG best practices, and their work does little to harm the environment or society."
+    };
+  }
+  return {
+    range: "70-100",
+    status: "Excellent",
+    desc: "Companies that obtain a good ESG rating follow most ESG best practices, and their work does very little to harm the environment or society."
+  };
+}
 
   
   const downloadPNG = async () => {
@@ -213,8 +265,7 @@ export default function UploadDocument() {
               <strong>What does the ESG rating mean?</strong>
               <div style={{ marginTop: 6 }}>
                 A <strong>{overall}</strong> ESG score indicates a good Sustainability performance. ESG rating score
-                is between is between 60-69, which according to the ESG score Rating system is a <strong>Good</strong> rating. Companies that obtain
-                 a good ESG rating follow most ESG best practices, and their work does little to harm the environment or society.
+                is between is between {range}, which according to the ESG score Rating system is a <strong>{status}</strong> rating. {description}
               </div>
             </div>
           </div>
