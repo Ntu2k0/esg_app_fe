@@ -12,7 +12,6 @@ export default function UploadDocument() {
   const [esg, setEsg] = useState(null);
   const [filename, setFilename] = useState("");
   const [error, setError] = useState("");
-
   const reportRef = useRef(null);
   const API = "https://esg-app-1-7w6d.onrender.com";
 
