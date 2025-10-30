@@ -30,7 +30,7 @@ export default function UploadDocument() {
       const json = await response.json();
 
       setScores(json.scores || null);
-      setOverall(typeof json.overal_score === "number" ? json.overal_score : json.overall);
+      setOverall(typeof json.overall_score === "number" ? json.overall_score : json.overall );
       setEsg(json.esg || null);
       setFilename(json.filename || "");
       //setDocId(json.doc_id ?? null);
