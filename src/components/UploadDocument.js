@@ -11,7 +11,9 @@ export default function UploadDocument() {
   const [overall, setOverall] = useState(null);
   const [esg, setEsg] = useState(null);
   const [filename, setFilename] = useState("");
+  //const [docI_d, setDocId] = useState(null); 
   const [error, setError] = useState("");
+
   const reportRef = useRef(null);
   const API = "https://esg-app-1-7w6d.onrender.com";
 
@@ -31,12 +33,12 @@ export default function UploadDocument() {
       setOverall(typeof json.overal_score === "number" ? json.overal_score : json.overall);
       setEsg(json.esg || null);
       setFilename(json.filename || "");
-      setDocId(json.doc_id ?? null);
+      //setDocId(json.doc_id ?? null);
       setError("");
     } catch (err) {
       console.error("Document upload failed:", err);
       setError(err.message);
-      setScores(null); setOverall(null); setEsg(null); setFilename(""); setDocId(null);
+      setScores(null); setOverall(null); setEsg(null); setFilename("");
     } finally {
       setFile(null);
     }
