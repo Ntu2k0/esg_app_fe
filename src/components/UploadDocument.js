@@ -266,6 +266,17 @@ export default function UploadDocument() {
               <div style={{ marginTop: 6 }}>
                 A <strong>{overall}</strong> ESG score indicates a good Sustainability performance. ESG rating score
                 is between is between {range}, which according to the ESG score Rating system is a <strong>{status}</strong> rating. {description}
+                <br></br>
+                <br></br>
+                Environmental disclosures such as emissions, innovations and resource efficiency is highly reported, which aligns with how data center and telecom companies often emphasis on PUE/CUE, renewables, cooling, etc.
+                Governance disclosures is balanced with strong ethics statements, but corperate governance details such as risk controls, independence, board stricture, etc are missing.
+                Social is under-reported. This could raise concerns on safety, training, turnover, community engagement, etc.
+              </div>
+              <br></br>
+              <br></br>
+              <strong>Recommendations</strong>
+              <div>
+                Balance the report. Improve Governance and Social pillars.
               </div>
             </div>
           </div>
